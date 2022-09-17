@@ -1,0 +1,17 @@
+{
+  "editor.rulers": [ 100 ],
+
+  "astyle.astylerc": "${workspaceFolder}/src/.astylerc",
+  "astyle.c.enable": true,
+  "astyle.cpp.enable": true,
+  "astyle.csharp.enable": false,
+  "astyle.java.enable": false,
+  "astyle.objective-c.enable": false,
+
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false,
+
+
+
+  "editorconfig.generateAuto": false
+}

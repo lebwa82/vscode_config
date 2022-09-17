@@ -1,0 +1,218 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "docker build",
+      "type": "shell",
+      "command": "docker compose build --pull --force-rm sslsplitter",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build quic",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_quic.sh --fresh --preset=debug-lldb",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build debug",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_dist.sh --fresh --preset=debug",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build debug-gcc",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_dist.sh --fresh --preset=debug-gcc",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build debug-lldb",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_dist.sh --fresh --preset=debug-lldb",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build pvs",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_dist.sh --fresh --preset=debug-gcc -DWITH_PVS=1",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build dist",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_dist.sh --fresh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build www",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_www.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build installer",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_installer.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build modules",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_modules.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build modules pvs",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_modules.sh pvs",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build modules pvs_clean",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_modules.sh pvs_clean",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "build all",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/build_all.sh --fresh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "cmake",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter sh etc/cmake.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "ninja dist",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter ninja -Cbuild dist",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "ninja astyle",
+      "type": "shell",
+      "command": "docker compose run --rm sslsplitter ninja -Cbuild astyle",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true,
+        "focus": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  ]
+}
